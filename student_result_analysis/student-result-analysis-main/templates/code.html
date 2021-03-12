@@ -1,0 +1,247 @@
+  {% extends 'sample.html' %}
+  
+  
+  {% block content %}
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      body{
+        background-image: url("https://media5.picsearch.com/is?EWF0bWO2-UqNJ9sxaxpCwEBGAcRRF59-yWH-gw0AHoo&height=213");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        font-style: italic;
+        color: beige;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    
+  
+
+    #include < stdio.h >  <br>
+    #include < iostream.h > <br>
+    #include < conio.h > <br>
+    #include < fstream.h > <br>
+    #include < stdlib.h > <br>
+    #include < math.h > <br>
+    struct student <br>
+    {<br>
+    int rollno;<br>
+    char name[50];<br>
+    int p,c,m,e;<br>
+    float per;<br>
+    int grade;<br>
+    }st[10];<br>
+    void get_data(int i)<br>
+    {<br>
+    cout<<"\n\nEnter roll no\n";<br>
+    cin>>st[i].rollno;<br>
+    cout<<"\n\Enter the name of student\n";<br>
+    cin>>st[i].name;<br>
+    cout<<"\n\nEnter web development marks out of 100\n";<br>
+    cin>>st[i].p;<br>
+    cout<<"\n\nEnter cyber security marks out of 100\n";<br>
+    cin>>st[i].c;<br>
+    cout<<"\n\nEnter data science marks out of 100\n";<br>
+    cin>>st[i].m;<br>
+    cout<<"\n\nEnter IOT marks out of 100\n";<br>
+    cin>>st[i].e;<br>
+    st[i].per=(st[i].p+st[i].c+st[i].m+st[i].e)/4;<br>
+    if(st[i].per>=90)<br>
+    st[i].grade=10;<br>
+    else if(st[i].per>=80&&st[i].per<90)<br>
+    st[i].grade=9;<br>
+    else if(st[i].per>=70&&st[i].per<80)<br>
+    st[i].grade=8;<br>
+    else if(st[i].per>=60&&st[i].per<70)<br>
+    st[i].grade=7;<br>
+    else<br>
+    st[i].grade=0;<br>
+    }<br>
+    fstream fp;<br>
+    void showdata(int i)<br>
+    {<br>
+    clrscr();<br>
+    cout<<"                "<<"DAYANANDA SAGAR COLLEGE OF ENGINEERING";<br>
+    cout<<"\nSemester\t\t4";<br>
+    cout<<"\n Rollno\t\t\t"<<st[i].rollno; <br>
+    cout<<"\nName\t\t\t"<<st[i].name; <br>
+    cout<<"\nWeb Development\t\t"<<st[i].p; <br>
+    cout<<"\nCyber Security\t\t"<<st[i].c; <br>
+    cout<<"\nData Science\t\t"<<st[i].m; <br>
+    cout<<"\nIOT\t\t\t"<<st[i].e; <br>
+    cout<<"\nPercentage\t\t"<<st[i].per; <br>
+    cout<<"\nGrade\t\t\t"<<st[i].grade; <br>
+    } <br>
+    void write_student(int n)<br>
+    {<br>
+    int i;<br>
+    fp.open("result.dat",ios::out|ios::app);<br>
+    for(i=0;i<n;i++)<br>
+    {<br>
+    get_data(i);<br>
+    fp.write((char*)&st[i],sizeof(student));<br>
+    }<br>
+    fp.close();<br>
+    cout<<"\n\n\nStudent record has been created";<br>
+    getch();<br>
+    }<br>
+    void display_all(int n)<br>
+    {<br>
+    clrscr();<br>
+    int i;<br>
+    cout<<"\n\n\nDISPLAY ALL RECORD!!!\n\n\n";<br>
+    fp.open("result.dat",ios::in);<br>
+    for(i=0;i<n;i++) <br>
+    {<br>
+    showdata(i);<br>
+    getch();<br>
+    }<br>
+    fp.close();<br>
+    getch();<br>
+    }<br>
+    void display_sp(int num,int low,int high)<br>
+    {<br>
+    int mid,flag=0;<br>
+    fp.open("result.dat",ios::in);<br>
+    while(low<=high)<br>
+    {<br>
+    while(fp.read((char*)&st,sizeof(student)))<br>
+    {<br>
+    mid=(low+high)/2;<br>
+    if(st[mid].rollno==num)<br>
+    {<br>
+    flag=1;<br>
+    clrscr();<br>
+    showdata(mid);<br>
+    }<br>
+    else if(st[mid].rollno>num)<br>
+    {<br>
+    high=mid-1;<br><br>
+    }<br>
+    else<br>
+    {<br><br>
+    low=mid+1;<br>
+    }}}<br>
+    fp.close();<br>
+    if(flag==0)<br>
+    cout<<"\n\mELEMENT NOT FOUND";<br>
+    }<br>
+    void analysis(int n)<br>
+    {
+    int ma=0,i,x=0,y=0,arr[50];<br>
+    fp.open("result.dat",ios::in);<br>
+    for(i=0;i<n;i++)<br>
+    {<br>
+    x=x+st[i].per;<br>
+    arr[i]=st[i].per;<br>
+    }<br>
+    int avg,z;<br>
+    avg=x/n;<br>
+    cout<<"AVERAGE MARKS IS\n"<<avg;<br>
+    for(i=0;i<n;i++)<br>
+    {<br>
+    if(arr[i]>ma)<br>
+    {<br>
+    ma=arr[i];<br>
+    z=i;<br>
+    }<br>
+    if(arr[i]<60)<br>
+    {<br>
+    y=y+1;<br>
+    }}<br>
+    cout<<"\nHIGHEST MARKS IS\n"<<ma<<"\nBY STUDENT\t"<<st[z].name; <br>
+    cout<<"\nNO OF STUDENTS WHO FAILED ARE\n"<<y;<br>
+    fp.close();<br>
+    }<br>
+    void sorting(int n)<br>
+    {<br>
+    int i,a[50],b[50];<br>
+    char* c[50];<br>
+    fp.open("result.dat",ios::in);<br>
+    for(i=0;i<n;i++)<br>
+    {<br>
+    a[i]=st[i].per;<br>
+    c[i]=st[i].name;<br>
+    b[i]=st[i].rollno;<br>
+    }<br>
+    int j;<br>
+    for(i=0;i<n-1;i++)<br>
+    {<br>
+    for(j=0;j<n-i-1;j++)<br>
+    {<br>
+    if(a[j]<a[j+1])<br>
+    {<br>
+    int temp=a[j];<br>
+    a[j]=a[j+1];<br>
+    a[j+1]=temp;<br>
+    char* var=c[j];<br>
+    c[j]=c[j+1];<br>
+    c[j+1]=var;<br>
+    int loc=b[j];<br>
+    b[j]=b[j+1];<br>
+    b[j+1]=loc;<br>
+    }}}<br>
+    cout<<"SORTED ACCORDING TO MARKS\n";<br>
+    cout<<"Roll no\t"<<"Name\t"<<"Percentage\n";<br>
+    for(i=0;i<n;i++)<br>
+    {<br>
+    cout<<b[i]<<"\t";<br>
+    cout<<c[i]<<"\t";<br>
+    cout<<a[i]<<"\n";<br>
+    }<br>
+    fp.close();<br>
+    }<br>
+    void main()<br>
+    {<br>
+    int n,i,num;<br>
+    clrscr();<br>
+    cout<<"Enter the total no of students";<br>
+    cin>>n;<br>
+    clrscr();<br>
+    cout<<"\n\nWrite the details of student";<br>
+    write_student(n);<br>
+    for(;;)<br>
+    {<br>
+    char ch;<br>
+    cout<<"\n\nEnter choice";<br>
+    cout<<"\n1.display all\n2.specific record\n3.class analysis\n4.sorting\n";<br>
+    ch=getche();<br>
+    switch(ch)<br>
+    {<br>
+    case '1':clrscr();<br>
+       display_all(n);<br>
+       break;<br>
+    case '2':clrscr();<br>
+       cout<<"\n\nEnter the student usn";<br>
+       cin>>num;<br>
+       display_sp(num,0,n-1);<br>
+       break;<br>
+    case '3':clrscr();<br>
+       analysis(n);<br>
+       break;<br>
+    case '4':clrscr();<br>
+       sorting(n);<br>
+       break;<br>
+    default:exit(0);<br>
+    }}<br>
+    }<br>
+    
+    
+    
+  </body>
+  </html>
+  {% endblock content %}
+ 
+ 
+ 
+ 
+  
+  
+  

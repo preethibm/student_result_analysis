@@ -1,0 +1,66 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OUR WEBSITE</title>
+</head>
+<style>
+  body{
+    background-image: url('');
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+    
+  }
+  li{
+    list-style: none;
+    display: inline;
+    float: left;
+  }
+  .b{
+    padding: 5px 5px;
+    text-decoration: none;
+    color: navy;
+
+  }
+ 
+
+  #yes p{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  #qw{
+    background-color: darkorange;
+  }
+  #as{
+    background-color: floralwhite;
+  }
+  #zx{
+    background-color:seagreen;
+  }
+ 
+ 
+</style>
+<body>
+<div>
+  <ul>
+ 
+    <li><a id="qw" class='b' href="{% url 'home' %}">HOME</a></li>
+    <li><a id="as" class='b' href="{% url 'details' %}">PROJECT DETAILS</a></li>
+    <li><a id="zx" class='b' href="{% url 'code' %}">CODE</a></li>
+  
+  </ul><br>
+  
+<div><br>
+{% block content %}
+
+
+{% endblock content %}
+</div>
+
+
+  
+</body>
+</html>
